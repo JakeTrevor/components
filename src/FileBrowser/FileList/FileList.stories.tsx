@@ -15,6 +15,9 @@ export default {
       },
     },
   },
+  argTypes: {
+    update: { action: "Change Directory" },
+  },
 } as ComponentMeta<typeof FileList>;
 
 const Template: ComponentStory<typeof FileList> = (args: fileListProps) => (
@@ -31,5 +34,4 @@ let exampleDir = {
 
 Basic.args = {
   data: exampleDir,
-  update: update,
 };

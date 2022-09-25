@@ -1,0 +1,50 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs";
+
+import FileDisplay from "./FileDisplay";
+
+<Meta title="Components/File Browser/File Display" component={FileDisplay} />
+
+export const Template = (args) => <FileDisplay {...args} />;
+
+export const markdownSample = `# Heading
+subtext
+## Subtext
+-item 1
+-item 2
+-item 3`;
+
+export const pythonSample = `def hello():
+  print("hello world!")
+  a = "another string"
+  b = [each for each in a]`;
+
+# File Display
+
+Component that displays a single file.
+
+The text to be rendered in as the `data` prop.
+FileDisplay then does syntax highlighting with [highlight.js](https://highlightjs.org/). Alternatively, if the `isMarkdown` prop is set, it renders the contents as markdown using [react-markdown](https://www.npmjs.com/package/react-markdown).
+
+<Canvas>
+  <Story name="Markdown" args={{ isMarkdown: true, data: markdownSample }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Markdown" />
+
+## Plain Text Variant:
+
+<Canvas>
+  <Story name="Plain Text" args={{ isMarkdown: false, data: "Hello world!" }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With some Python:
+
+<Canvas>
+  <Story name="Python" args={{ isMarkdown: false, data: pythonSample }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

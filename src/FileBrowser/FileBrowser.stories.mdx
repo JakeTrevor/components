@@ -1,0 +1,48 @@
+import { Meta, IconGallery, IconItem } from "@storybook/addon-docs";
+import Back from "./assets/back.svg";
+import Folder from "./assets/folder.svg";
+import File from "./assets/file.svg";
+
+<Meta title="Components/File Browser/Outline" />
+
+# File Browser
+
+A component for rending out a browsable file system structure.
+
+## Directory interface
+
+The file system rendered out by the FileBrowser component is modelled by the Directory type, which is defined as so:
+
+```typescript
+declare interface Directory {
+  [index: string]: string | Directory;
+}
+```
+
+When the value associated with a key is a string, that key is a file, and the value is it's contents.
+
+Providing FileBrowser a Directory object as the `data` prop will render it out and allow you to browse it.
+
+## Composition
+
+FileBrowser is composed of three components:
+
+- [Browser](?path=/docs/components-file-browser-browser--basic), which is a wrapper around the other two components and provides the driving logic for navigation.
+- [FileDisplay](?path=/docs/components-file-browser-file-display--plain-text), which renders out an individual file for viewing, with syntax highlighting.
+- [FileList](?path=/docs/components-file-browser-file-list--basic), which renders out a list of files and exposes a callback for each (to facilitate navigation).
+
+It also makes use of the [useQueryParam hook](?path=/docs/hooks-usequeryparam--example)
+
+## Icons
+
+<IconGallery>
+  <IconItem name="Back">
+    <Back />
+  </IconItem>
+  <IconItem name="Folder">
+    <Folder />
+  </IconItem>
+  <IconItem name="File">
+    <File />
+  </IconItem>
+</IconGallery>

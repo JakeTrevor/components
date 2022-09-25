@@ -1,0 +1,97 @@
+import {
+  Meta,
+  Canvas,
+  Story,
+  IconGallery,
+  IconItem,
+  ArgsTable,
+} from "@storybook/addon-docs";
+
+import FileList from "./FileList";
+
+import File from "../assets/file.svg";
+import Folder from "../assets/folder.svg";
+
+<Meta
+  title="Components/File Browser/File List"
+  component={FileList}
+  argTypes={{
+    update: { action: "Change Directory" },
+  }}
+/>
+
+export const Template = (args) => <FileList {...args} />;
+
+export const basicExampleDir = {
+  fileA: "hello world",
+  fileB: "Green eggs and ham",
+  dirA: { FileC: "Foo and Bar" },
+};
+
+export const pythonExampleDir = {
+  "helloWorld.py": "print('hello world')",
+  "helloX.py": `name = input('what is your name?')
+print(f'hello {name}')`,
+};
+
+# File List
+
+Given a Directory object, this component renders out the top level of Keys.
+
+<Canvas>
+  <Story
+    name="Basic"
+    args={{
+      data: basicExampleDir,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Basic" />
+
+FileList takes two props:
+
+- data - which must be a [Directory object](http://localhost:6006/?path=/docs/components-file-browser-outline--page#Directory%20interface)
+- update - which will discuss in detail [below](#onClick)
+
+## Icons
+
+FileList will analyse the contents of each key to determine if it is a file (value is a string) or a directory (value is an object). It then assigns an icon to each item, as below:
+
+<IconGallery>
+  <IconItem name="Folder">
+    <Folder />
+  </IconItem>
+  <IconItem name="File">
+    <File />
+  </IconItem>
+</IconGallery>
+
+These can be swapped out as needed.
+
+## onClick <a name="onClick"/>
+
+FileList also exposes an "update" function, which is used for changing directory.
+
+Whenever one of the items it is displaying is clicked on, it calls the update function which was passed in as a prop. It must have the type:
+
+```typescript
+(newDir: string) => void
+```
+
+The `newDir` argument will be the key (or "name") of the item clicked on. So for example here, if you click on "helloWorld.py" below, that is what will be passed to update.
+
+<Canvas>
+  <Story
+    name="Python"
+    args={{
+      data: pythonExampleDir,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+You can check this in actions.

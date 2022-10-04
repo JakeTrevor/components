@@ -20,6 +20,7 @@
     "@babel/core": "^7.19.1",
     "@babel/preset-env": "^7.19.1",
     "@babel/preset-typescript": "^7.18.6",
+    "@mdx-js/react": "^1.6.22",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-interactions": "^6.5.12",
@@ -31,6 +32,7 @@
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
     "babel-loader": "^8.2.5",
+    "storybook-addon-url-inspector": "^1.1.1",
     "typescript": "^4.6.4",
     "vite": "^3.1.0",
     "vite-plugin-svgr": "^2.2.1"

@@ -9,6 +9,7 @@ let config: StorybookViteConfig = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
+    "storybook-addon-url-inspector",
   ],
   typescript: {
     check: false,

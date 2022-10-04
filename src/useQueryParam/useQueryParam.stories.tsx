@@ -1,16 +1,16 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Title, Subtitle, Description, Primary } from "@storybook/addon-docs";
-import fs from "fs";
-
-import DisplayURL from "../DisplayURL/DisplayURL";
 
 import Demo from "./Demo";
 
 export default {
   component: Demo,
   title: "Hooks/useQueryParam",
-  decorators: [DisplayURL],
   parameters: {
+    URLInspector: {
+      enabled: true,
+      timeout: 2000,
+    },
     docs: {
       description: {
         component: `This is a custom hook which links some state (must be serialised as a string) to a query parameter in the url.

@@ -1,19 +1,28 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import DisplayURL from "../../DisplayURL/DisplayURL";
 
 import Browser, { browserProps } from "./Browser";
 
 export default {
   component: Browser,
   title: "Components/File Browser/Browser",
-  decorators: [DisplayURL],
   parameters: {
+    URLInspector: {
+      enabled: true,
+      timeout: 2000,
+    },
     docs: {
       description: {
         component: `Component for rendering out a browsable file system. Allows a user to traverse up and down, and to read files.`,
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ margin: "3em" }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof Browser>;
 
 const Template: ComponentStory<typeof Browser> = (args: browserProps) => (
@@ -29,4 +38,13 @@ let exampleDir = {
 
 Basic.args = {
   data: exampleDir,
+};
+
+export const MD = Template.bind({});
+let mdDir = {
+  "README.md": "# hello world! \n ## this is a subheading",
+  "main.c": '#include <stdio.h>; \n\nint main(){\nprintf("hello world!");\n}',
+};
+MD.args = {
+  data: mdDir,
 };

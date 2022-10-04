@@ -18,6 +18,13 @@ import Folder from "../assets/folder.svg";
   argTypes={{
     update: { action: "Change Directory" },
   }}
+  decorators={[
+    (Story) => (
+      <div style={{ margin: "3em" }}>
+        <Story />
+      </div>
+    ),
+  ]}
 />
 
 export const Template = (args) => <FileList {...args} />;

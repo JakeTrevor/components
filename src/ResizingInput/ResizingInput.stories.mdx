@@ -1,0 +1,34 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs";
+import { useState } from "react";
+import ResizingInput from "./ResizingInput";
+
+<Meta title="Components/Resizing Input" component={ResizingInput} />
+
+export const Template = (args) => {
+  let [s, setS] = useState("");
+  return <ResizingInput value={s} setValue={setS} {...args} />;
+};
+
+# Resizing Input
+
+Sometimes a user may want to give a large amount of text as input. However, sizing the input for this is often difficult, or just ugly. Worse than a large input which hogs the page however, is an overly small input which the user has to scroll through to see everything they typed. The Resizing Input fixes this issue by atutomatically sizing the `textarea` for the input the user provides. It accepts props the same way a regular text element does, but includes an effect on value change which resizes the input.
+
+<Canvas>
+  <Story name="Basic">{Template.bind({})}</Story>
+  <Story name="Passing class name" args={{ className: "box" }}>
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Passing styles"
+    args={{
+      style: {
+        background: "blue",
+        "min-height": "3em",
+        border: "none",
+        resize: "none",
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

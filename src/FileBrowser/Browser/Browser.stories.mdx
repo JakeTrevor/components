@@ -1,0 +1,56 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs";
+
+import Browser from "./Browser";
+
+<Meta
+  title="Components/File Browser/Browser"
+  component={Browser}
+  decorators={[
+    (Story) => (
+      <div style={{ margin: "3em" }}>
+        <Story />
+      </div>
+    ),
+  ]}
+  parameters={{
+    URLInspector: {
+      enabled: true,
+      timeout: 2000,
+    },
+  }}
+/>
+
+export const Template = (args) => <Browser {...args} />;
+
+# File Browser
+
+This component combines FileList and FileDisplay together. It also provides the "driving logic" for the sub-components. For example it includes the state for navigating the file system, and determines weather a file should be rendered as markdown or not.
+
+export let exampleDir = {
+  fileA: "hello world",
+  fileB: "Green eggs and ham",
+  dirA: { FileC: "Foo and Bar" },
+};
+
+<Canvas>
+  <Story name="Basic" args={{ data: exampleDir }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Basic" />
+
+FileBrowser takes a single prop:
+
+- data - which must be a [Directory object](http://localhost:6006/?path=/docs/components-file-browser-outline--page#Directory%20interface)
+
+export let mdDir = {
+  "README.md": "# hello world! \n ## this is a subheading",
+  "main.c": '#include <stdio.h>; \n\nint main(){\nprintf("hello world!");\n}',
+};
+
+<Canvas>
+  <Story name="Markdown" args={{ data: mdDir }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

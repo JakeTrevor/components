@@ -1,0 +1,22 @@
+.node {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.children {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.name {
+  margin: 0;
+
+  padding: 1px 10px;
+  border-radius: 10px;
+  background-color: darkgray;
+}

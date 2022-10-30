@@ -1,0 +1,20 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs";
+
+import Tree from "./Tree";
+import { sample } from "./binTree";
+
+<Meta title="Components/Tree" component={Tree} />
+
+export const Template = (args) => <Tree {...args} />;
+
+# Tree
+
+Trees are at the heart of many algorithms. When visualizing algorithms, it is useful to be able to see the tree structures underpining them. The aim of this component is to allow you to build a generalized tree structure from data and display it.
+
+<Canvas>
+  <Story name="Basic" args={{ tree: sample }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Basic" />

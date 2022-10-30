@@ -1,0 +1,25 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs";
+
+import RC from "../Canvas/Canvas";
+
+import Circle from "./Circle";
+
+<Meta title="Canvas/Circle" component={Canvas} />
+
+export const Template = (args) => (
+  <RC style={{ "box-shadow": "0 3px 5px rgba(0, 0, 0, 0.384)" }}>
+    <Circle {...args} />
+  </RC>
+);
+
+# Canvas
+
+This component is a simple example of how to use the canvas context provided byt the canvas element to draw something to the canvas.
+
+<Canvas>
+  <Story name="Basic" args={{ centre: { x: 50, y: 50 }, radius: 25 }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Basic" />

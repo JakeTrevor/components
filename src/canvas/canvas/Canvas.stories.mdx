@@ -1,0 +1,24 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs";
+
+import RC from "./Canvas";
+
+<Meta title="Canvas/Canvas" component={Canvas} />
+
+export const Template = (args) => <RC {...args} />;
+
+# Canvas
+
+This component produces the actual Canvas element in the DOM. It exposes to its children a context, which has the required refs and details to allow them to draw to the canvas.
+
+<Canvas>
+  <Story
+    name="Basic"
+    args={{ style: { "box-shadow": "0 3px 5px rgba(0, 0, 0, 0.384)" } }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Basic" />
+
+Props on the Canvas pass through directly to the HTML element (unless otherwise specified), so you can interact with it just as you usually would.
